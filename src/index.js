@@ -10,10 +10,12 @@ module.exports = function zeros(expression) {
         if (mas[i].indexOf('!!') === -1) {
             for (let j = 1; j <= number; j++){
                 result = j;
+                if (result%2 === 0) {
+                    check++
+                }
                 while (result%5 === 0){
                     result = result/5;
                     sum++;
-                    check = 1;
                 }
             }
         } else {
@@ -23,6 +25,7 @@ module.exports = function zeros(expression) {
                     while(result%5 === 0) {
                         result = result/5;
                         sum++;
+                        check--;
                     }
                     j++;
                 }
@@ -30,16 +33,16 @@ module.exports = function zeros(expression) {
                 for (let j = 1; j <= number; j++) {
                     j++;
                     result = j;
+                    check++;
                     while (result%5 === 0) {
                         result = result/5;
                         sum++;
-                        check = 1;
                     }
                 }
             }
         }
     }
-    if (check) {
+    if (check > 0) {
         return sum;
     } else {
         return 0;
